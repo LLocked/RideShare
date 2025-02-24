@@ -9,11 +9,11 @@ public class Person{
         startLocation = myStart;
         direction = destination> startLocation;
     }
-    
+
     public int getDestination(){
         return destination;
     }
-
+    
     public boolean getDirection(){
         return direction;
     }
