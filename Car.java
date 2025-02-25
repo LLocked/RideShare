@@ -26,4 +26,20 @@ public class Car {
     public boolean hasRoom(){
         return passengers.size() < 3;
     }
+    public Person unload(){
+        for (int i = 0;i<passengers.size();i++){
+            Person a  = passengers.get(i);
+            if(a.getDestination() == currentLocation){
+                return passengers.remove(i);
+            }
+        }
+        return null;
+    }
+    public void move(){
+        if(currentLocation == destination){
+            currentLocation++;
+        }else {
+            currentLocation--;
+        }
+    }
 }
