@@ -23,6 +23,9 @@ public class Car {
         passengers.add(p);
         }
     }
+    public int getLocation(){
+        return currentLocation;
+    }
     public boolean hasRoom(){
         return passengers.size() < 3;
     }
