@@ -16,12 +16,10 @@ public class Road {
         fleet = new ArrayList<Car>();
     }
 
-
-
     //////Functions
     
 
-
+            //////Creates Stations
     public void populateStations(int numPeople){
         for(int i = 0; i<numPeople;i++){
             int start = (int)(Math.random()*NUMSTATIONS);
@@ -29,7 +27,7 @@ public class Road {
             stations[start].addPerson(new Person(stop,start));
         }
     }
-
+            //////Creates Cars
     public void populateCars(int numCars){
         for(int i = 0; i <numCars; i++){
             int start = (int)(Math.random()*NUMSTATIONS);
@@ -37,6 +35,8 @@ public class Road {
             fleet.add(new Car(stop, start));
         }
     }
+
+            //////Returns String of stations + Cars
     public String toString(){
         String s = "";
         for (Station st : stations){
@@ -49,13 +49,32 @@ public class Road {
         }
         return s;
     }   
+
+            ////// MOVES EVERYTHING
     public void move(){
         for(Car c : fleet){
             Person p = c.unload();
             if(p!= null){
                 int location = c.getLocation();
                 stations[location].addPerson(p);
+            } else{
+                break;
             }
+        }
+        for(Car c : fleet){
+            c.move();
+        }
+        for(Car c: fleet){
+            loadSpecificCar(c);
+        }
+    }
+
+    public void loadSpecificCar(Car c){
+        Station matching = stations[c.getLocation()];
+        if(c.getDirection()){
+            c.addPassenger(matching.nextRight());
+        }else if(!c.getDirection()){
+            c.addPassenger(matching.nextLeft());
         }
     }
 }
