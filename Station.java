@@ -14,6 +14,7 @@ public class Station {
      public int completedCount(){
         return completed.size();     
     }
+    
     public void addPerson(Person p){
         if(p.getDestination() == number){
             completed.add(p);

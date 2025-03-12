@@ -3,11 +3,6 @@ public class Tester {
         Road r = new Road();
         System.out.println(r.toString());
         r.populateCars(5);
-        
-
-
-
-
 
 
 
