@@ -25,6 +25,7 @@ public class Station {
         }
     }
 
+    //removes first person on the left line
     public Person nextLeft(){
         if(waitingLeft.size()>0){
             return waitingLeft.remove(0);
@@ -32,6 +33,8 @@ public class Station {
             return null;
         }
     }
+
+    //removes first person on the left line
     public Person nextRight(){
         if(waitingRight.size()>0){
             return waitingRight.remove(0);

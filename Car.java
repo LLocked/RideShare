@@ -17,12 +17,18 @@ public class Car {
         return "Destination: "+destination+" Going right? "+direction+" Passengers: "+passengers+"";
     }
 
+
+    /// tries to add Passengers to the car  checks if there is room
     public void addPassenger(Person p){
         if(passengers.size()>= 3){
             System.out.println("Error: No room!");
         }else{
         passengers.add(p);
         }
+    }
+
+    public int numofPassengers(){
+        return passengers.size();
     }
     public int getLocation(){
         return currentLocation;
@@ -34,7 +40,7 @@ public class Car {
         return passengers.size() < 3;
     }
 
-    ///unload all people
+    ///unload 1 person and checks to see if either the car or the passenger has reached their destination
     public Person unload(){
         for (int i = 0;i<passengers.size();i++){
             Person a  = passengers.get(i);
@@ -45,6 +51,7 @@ public class Car {
         return null;
     }
     
+    //moves car
     public void move(){
         if(currentLocation != destination){
             if(direction){

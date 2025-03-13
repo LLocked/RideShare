@@ -53,12 +53,14 @@ public class Road {
             ////// MOVES EVERYTHING
     public void move(){
         for(Car c : fleet){
+            for(int i = 0; i<c.numofPassengers(); i++){
             Person p = c.unload();
             if(p!= null){
                 int location = c.getLocation();
                 stations[location].addPerson(p);
             } else{
                 break;
+                }
             }
         }
         for(Car c : fleet){
@@ -69,11 +71,12 @@ public class Road {
         }
     }
 
+    // matches stations with the current location of cars and checks to see whether the car has room or not
     public void loadSpecificCar(Car c){
         Station matching = stations[c.getLocation()];
-        if(c.getDirection()){
+        if(c.getDirection()&& c.hasRoom()){
             c.addPassenger(matching.nextRight());
-        }else if(!c.getDirection()){
+        }else if(!c.getDirection() && c.hasRoom()){
             c.addPassenger(matching.nextLeft());
         }
     }
