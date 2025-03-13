@@ -14,7 +14,7 @@ public class Car {
     }
 
     public String toString(){
-        return "Destination: "+destination+" Going right? "+direction+" Passengers: "+passengers+"";
+        return "Destination: "+destination+"| Going right? "+direction+"| Passengers: "+passengers+"";
     }
 
 
@@ -43,11 +43,12 @@ public class Car {
     ///unload 1 person and checks to see if either the car or the passenger has reached their destination
     public Person unload(){
         for (int i = 0;i<passengers.size();i++){
-            Person a  = passengers.get(i);
-            if(a.getDestination() == currentLocation || destination == currentLocation){
+            if(passengers.get(i)!= null){
+            if(passengers.get(i).getDestination() == currentLocation || destination == currentLocation){
                 return passengers.remove(i);
             }
         }
+    }
         return null;
     }
     

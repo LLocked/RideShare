@@ -42,4 +42,10 @@ public class Station {
             return null;
         }
     }
+    public String toString(){
+        String s = "Completed : " + completed.size() + "| Leftbound : " + waitingLeft.size()+"| Rightbound : " + waitingRight.size();
+
+        return s;
+
+    }
 }

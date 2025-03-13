@@ -20,7 +20,8 @@ public class Road {
     
 
             //////Creates Stations
-    public void populateStations(int numPeople){
+            /// 
+    public void populatePeople(int numPeople){
         for(int i = 0; i<numPeople;i++){
             int start = (int)(Math.random()*NUMSTATIONS);
             int stop = (int)(Math.random()*NUMSTATIONS);
@@ -35,39 +36,42 @@ public class Road {
             fleet.add(new Car(stop, start));
         }
     }
+    public String testfleet(){
+        return fleet.toString();
+    }
 
             //////Returns String of stations + Cars
     public String toString(){
         String s = "";
         for (Station st : stations){
             s += st.toString();
+            s+= "\n";
         }
         s +="Cars:\n";
         for(Car c: fleet){
-            s +=c.toString();
+            s += c.toString();
             s+= "\n";
         }
         return s;
     }   
-
             ////// MOVES EVERYTHING
     public void move(){
         for(Car c : fleet){
-            for(int i = 0; i<c.numofPassengers(); i++){
-            Person p = c.unload();
-            if(p!= null){
-                int location = c.getLocation();
-                stations[location].addPerson(p);
-            } else{
-                break;
+            for (int i = 0; i < c.numofPassengers(); i++) {
+                Person p = c.unload();
+                if (p != null) {
+                    int location = c.getLocation();
+                    stations[location].addPerson(p);
+                } else {
+                    break;
                 }
             }
         }
-        for(Car c : fleet){
-            c.move();
-        }
         for(Car c: fleet){
             loadSpecificCar(c);
+        }
+        for(Car c : fleet){
+            c.move();
         }
     }
 
