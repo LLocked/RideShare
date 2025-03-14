@@ -23,7 +23,7 @@ public class Person{
     }
 
     public String toString(){
-        return super.toString() " Start: " + startLocation + " Destination: " + destination;
+        return super.toString() + " Start: " + startLocation + " Destination: " + destination;
         }
 
 }
